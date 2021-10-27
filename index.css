@@ -19,12 +19,6 @@
   align-items: center;
 }
 
-.container {
-  display: flex;
-  background-color: silver;
-  flex: 1;
-}
-
 .search {
   display: flex;
   flex: 1;
@@ -52,4 +46,56 @@
 
 .button:hover {
   background-color: white;
+}
+
+/* 
+
+Estilos para grid basico (columnas y filas) 
+
+.container {
+  display: grid;
+  background-color: silver;
+  flex: 1;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: 300px 300px;
+  grid-auto-rows: 300px;
+}
+
+.card {
+  background-color: goldenrod;
+}
+
+*/
+
+.container {
+  display: grid;
+  background-color: silver;
+  flex: 1;
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header header"
+    "nav body body"
+    "footer footer footer";
+}
+
+.area-header {
+  background: red;
+  grid-area: header;
+}
+
+.area-nav {
+  grid-area: nav;
+  background: purple;
+}
+
+.area-body {
+  grid-area: body;
+  background: goldenrod;
+}
+
+.area-footer {
+  grid-area: footer;
+  background: blue;
 }
