@@ -3,6 +3,7 @@
 <head>
     <title>Store</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css" />
 </head>
 
@@ -17,28 +18,7 @@
                 <button class="button">C</button>
             </div>
         </header>
-        <div class="container">
-            <div class="card">
-                <div class="card-container-image">
-                    <image
-                        src="https://previews.123rf.com/images/jemastock/jemastock1706/jemastock170600883/79341661-imagen-en-color-de-dibujos-animados-fachada-tienda-ilustraci%C3%B3n-vectorial-de-tienda.jpg"
-                        class="card-image" />
-                </div>
-                <div class="card-container-name">
-                    <span class="card-name">Title</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-container-image">
-                    <image
-                        src="https://previews.123rf.com/images/jemastock/jemastock1706/jemastock170600883/79341661-imagen-en-color-de-dibujos-animados-fachada-tienda-ilustraci%C3%B3n-vectorial-de-tienda.jpg"
-                        class="card-image" />
-                </div>
-                <div class="card-container-name">
-                    <span class="card-name">Title</span>
-                </div>
-            </div>
-        </div>
+        <div class="container" id="container-cards"></div>
         <footer>
             <label>Footer</label>
         </footer>
@@ -46,16 +26,49 @@
 </body>
 
 <script type="text/javascript">
-    let name = 'Delvis';
-    var age = 12;
-    const precio = 12.2;
-    const status = true;
-    const user = {
-        nombre: 'Delvis',
-        apellido: 'Cedeño',
-        age: 12,
+    let stores = [];
+
+    const fetchStores = (stores) => {
+        for (let i = 1; i <= 20; i++) {
+            const store = {
+                id: i,
+                name: `Tienda ${i}`,
+                description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+                direction: 'Fray justo santamaria de oro 2752',
+                numberPhone: 1127985706,
+                status: i % 2 === 0 ? true : false,
+                image: 'https://picsum.photos/400',
+            };
+            stores.push(store);
+        }
     };
-    const arreglos = ['Delvis', 12, 12.2, true];
+
+
+    const renderHTML = (stores) => {
+        const containerCards = document.getElementById('container-cards');
+        stores.map((store, index) => {
+            containerCards.insertAdjacentHTML('beforeend', `
+                <div class="card" id="store_${store.id}" onclick='onClickStore(${JSON.stringify(store)});'>
+                    <div class="card-container-image">
+                        <image
+                            src="${store.image}"
+                            class="card-image" />
+                    </div>
+                    <div class="card-container-name">
+                        <span class="card-name">${store.name}</span>
+                    </div>
+                </div>
+            `);
+        });
+    };
+
+    const onClickStore = (store) => {
+        console.log(store);
+    };
+
+
+    fetchStores(stores);
+    renderHTML(stores);
 </script>
 
 </html>
