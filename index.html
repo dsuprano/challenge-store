@@ -17,28 +17,10 @@
                 <button class="button">C</button>
             </div>
         </header>
-        <div class="container">
-            <div class="card">
-                <div class="card-container-image">
-                    <image
-                        src="https://previews.123rf.com/images/jemastock/jemastock1706/jemastock170600883/79341661-imagen-en-color-de-dibujos-animados-fachada-tienda-ilustraci%C3%B3n-vectorial-de-tienda.jpg"
-                        class="card-image" />
-                </div>
-                <div class="card-container-name">
-                    <span class="card-name">Title</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-container-image">
-                    <image
-                        src="https://previews.123rf.com/images/jemastock/jemastock1706/jemastock170600883/79341661-imagen-en-color-de-dibujos-animados-fachada-tienda-ilustraci%C3%B3n-vectorial-de-tienda.jpg"
-                        class="card-image" />
-                </div>
-                <div class="card-container-name">
-                    <span class="card-name">Title</span>
-                </div>
-            </div>
+
+        <div class="container" id="container-cards">
         </div>
+
         <footer>
             <label>Footer</label>
         </footer>
@@ -46,16 +28,45 @@
 </body>
 
 <script type="text/javascript">
-    let name = 'Delvis';
-    var age = 12;
-    const precio = 12.2;
-    const status = true;
-    const user = {
-        nombre: 'Delvis',
-        apellido: 'Cedeño',
-        age: 12,
+    // el Javascript consume un servicio
+    // el servicio consume la base de datos
+    // la base de datos consulta las tiendas
+    // la base de datos obtiene y devuelve las tiendas encontradas
+    // el servicio guarda en memoria las tiendas
+    // el servicio retorna las tiendas al Javascript
+    // el Javascript renderiza las tiendas en el HTML
+
+
+    const store = {
+        id: 123,
+        name: 'Store 1',
+        logo: 'https://picsum.photos/200',
+        image: 'https://picsum.photos/200',
+        direction: 'Fray justo santamaria de oro 2752',
+        phoneNumber: '1127985706',
+        type: 'Bazar',
+        rif: '20-95732675-8',
+        status: true,
     };
-    const arreglos = ['Delvis', 12, 12.2, true];
+
+    const storeList = [store, store, store];
+
+    const element = document.getElementById('container-cards');
+
+    for (let i = 1; i <= 3; i++) {
+        element.insertAdjacentHTML('afterbegin', `
+            <div class="card">
+                <div class="card-container-image">
+                    <image
+                        src=${store.image}
+                        class="card-image" />
+                </div>
+                <div class="card-container-name">
+                    <span class="card-name">${store.name}</span>
+                </div>
+            </div>
+        `);
+    };
 </script>
 
 </html>
