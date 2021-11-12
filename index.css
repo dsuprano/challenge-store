@@ -66,6 +66,11 @@
   align-self: flex-start;
 }
 
+.card:hover {
+  box-shadow: 3px 3px 3px 1px green;
+  cursor: pointer;
+}
+
 .card-container-image {
   flex: 1;
   display: flex;
